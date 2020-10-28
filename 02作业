@@ -1,0 +1,101 @@
+#徐晗璐 20新医科 学号2002070002
+#2020.10.28
+#email:2995088023@qq.com
+#生物医学编程技术02作业
+
+#02练习
+1:5 + 6:10
+c(1,2,3,4)+c(9,8,7,6)
+sum(1:5)
+median(1:5)
+mean(1:9)
+sum(1,2,3,4,5)
+median(1,2,3,4,5)
+mean(1,2,3,4,5)
+c(1,2,3,4,5)-2
+-2:2*-2:2
+1:10/3
+abs(-9)
+abs(0)
+sqrt(10)
+log(10)
+log10(10)
+log(100,10)
+log10(100)
+1.23e5
+ln(2)#没有ln这个函数，log即数学中的ln
+identical(2^3,2**3)
+pi
+sin(30)
+sin(3.1415926)
+sin(pi)
+sin(pi/2)
+cos(c(0,pi/4,pi/2,pi))
+round(3.1415926,3)
+floor(3.1415)
+ceiling(pi)
+trunc(pi)#去除小数部分
+factorial(9)#阶乘
+exp(pi*1i)+1
+factorial(7)+factorial(1)-71^2
+choose(5,0:5)
+c(3,4-1,1+1+1) == 3
+1:3 != 3:1
+exp(1:5)<100
+(1:5)^2 >=16
+sqrt(2)^2 ==2
+sqrt(2)^2-2
+all.equal(sqrt(2)^2,2)
+all.equal(sqrt(2)^2,3)
+isTRUE(all.equal(sqrt(2)^2),3)
+isTRUE(all.equal(sqrt(2) ^2 , 3))
+c("can","CAN","C") == "can"
+c("A","B","C","D")<"C"
+c("a","b","c","d")<"C"
+x<-5:10
+y=2:7
+x+2*y-3
+c(lnf+1,lnf-1,lnf-lnf)
+c(inf+1,inf-inf)
+c(Inf+1,Inf-Inf)
+c(1/Inf,Inf/1,Inf/Inf)
+c(sqrt(Inf),sin(Inf))
+c(log(Inf),log(Inf,Inf))
+c(NA+1,NA*5,NA+Inf)
+c(NA+NA,NaN+NaN,NaN+NA,NA+NaN)
+x3<-c(0,Inf,-Inf,NaN,NA)
+is.infinite(x3)
+is.finite(x3)
+is.NaN(x3)
+is.nan(x3)
+is.na(x3)
+x4 <- 1:10>=5
+!x4
+y4<-1:10%%2 == 0 #%%表示取余
+x4|y4
+x4&y4
+
+#02作业
+atan(1/1:1000)
+x <- 1:1000
+y <- atan(1/x)
+z <- 1/tan(y)
+x == z
+identical(x,z)#返回FALSE
+all.equal(x,z)#返回TRUE
+true_and_missing <- c(TRUE,NA)
+false_and_missing <- c(FALSE,NA)
+mixed <- c(TRUE,FALSE,NA)
+any(true_and_missing)#返回TRUE
+any(false_and_missing)#返回NA
+any(mixed)#返回TRUE
+all(true_and_missing)#返回NA
+all(false_and_missing)#返回FALSE
+all(mixed)#返回FALSE
+
+#问题的回答
+问题1，用于整数除法的操作符: /
+问题2，如何检查变量x是否等于pi？ 直接输入x == pi ,然后run。相等则返回TRUE,反之FALSE。如果容差的话就输入all.equal（x,pi）,然后run。若相差极小也TRUE
+问题3，至少描述两种给变量赋值的方式。 1.x <- 2 ; 2.x = 2
+问题4，这5个数字中哪些是无限值：0，Inf，-Inf，NaN和NA？ 无限值：Inf，-Inf
+问题5，这5个数字中哪些不是缺失值：0，Inf， -Inf，NaN和NA？  不是缺失值：0，Inf， -Inf
