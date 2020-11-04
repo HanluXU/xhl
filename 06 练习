@@ -1,0 +1,176 @@
+#徐晗璐 20新医科班 学号2002070002
+#email:2995088023@qq.com
+#o6 练习
+
+an_environment <- new.env()
+an_environment
+an_environment[["pythag"]] <- c(1,2,3,4)
+an_environment$root <- polyroot(c(3,-4,5))
+an_environment
+assign(
+  "moonday",
+  weekdays(as.Date("1969/07/02")),
+  an_environment
+)
+an_environment[["pythag"]]
+an_environment$root
+get("moonday",an_environment)
+ls(envir = an_environment)
+ls.str(envir = an_environment)
+exists("pythag",an_environment)
+(a_list <- as.list(an_environment))
+as.environment(a_list)
+list2env(a_list)
+list2env(an_environment)
+nested_environment <- new.env(parent = an_environment)
+exists("pythag",nested_environment)
+exists("pythag",nested_environment,inherits = FALSE)
+non_stormers <<- c(1,2,3,4,5,6)
+get("non_stormers",envir = globalenv())
+head(ls(envir = baseenv()),20)
+hypotenuse <- function(x,y){
+  sqrt(x^2+y^2)
+}
+hypotenuse(y = 1,x = 31)
+hypotenuse2 <- function(x=5,y=12){
+  sqrt(x^2+y^2)
+}
+hypotenuse2()
+formals(hypotenuse2)
+args(hypotenuse2)
+formalArgs(hypotenuse2)
+(body_of_hypotenuse <- body(hypotenuse))
+deparse(body_of_hypotenuse)
+normalize <- function(x,m=mean(x),s=sd(x)){
+  (x-m)/s
+}
+normalized <- normalize(c(1,2,3,4,5)) 
+mean(normalized)
+sd(normalized)
+normalize(c(1,2,3,NA))
+normalize <- function(x,m = mean(x,na.rm = na.rm),s = sd(x,na.rm = na.rm),na.rm = FALSE){
+  (x - m)/s
+}
+normalize(c(1,2,3,NA))
+normalize(c(1,2,3,NA),na.rm = TRUE)
+normalize <- function(x,m=mean(x,...),s=sd(x,...),...){
+  (x-m)/s
+}
+normalize(c(1,2,3,NA))
+normalize(c(1,2,3,NA),na.rm = TRUE)
+do.call(hypotenuse,list(x=3,y=4))
+dfr1 <- data.frame(x=1:5,y=rt(5,1))#t分布
+dfr2 <- data.frame(x=6:10,y=rt(5,1,1))
+dfr3 <- data.frame(x=11:15,y=rbeta(5,1,1))
+do.call(rbind,list(dfr1,dfr2,dfr3))
+menage <- c(1,4,1,5,9,2,6)
+mean(menage)
+mean(c(1,4,1,5,9,2,6))
+x_plus_y <- function(x,y)x+y
+do.call(x_plus_y,list(1:5,5:1))
+do.call(function(x,y)x+y,list(1:5,5:1))
+emp_cun_dist_fn <- ecdf(rnorm(50))#ecdf函数返回一个向量的经验积累分布函数
+is.function(emp_cun_dist_fn)
+f <- function(x9){
+  y9 <- 1
+  g <- function(y9){
+    (x9+y9)/2
+  }
+  g(x9)
+}
+f(sqrt(5))
+f2 <- function(x8){
+  y8 <- 1
+  g(x8)
+}
+g <- function(y8){
+  (x8+y8)/2
+}
+f(sqrt(5))
+h <- function(x10){
+  x10*y10
+}
+h(9)
+y10 <- 19
+h(9)
+y11 <- 18
+h2 <- function(x11){
+  if(runif(1)>0.5)y11 <- 12#runif产生0到1间的随机数
+  x11*y11
+}
+replicate(10,h2(9))
+
+
+#问题6-1，全局环境的另一个名字是什么？  父环境
+#问题6-2，如何把列表转换为环境？  1.as.environment(a_list) 2.list2env(a_list)
+#问题6-3，如何将函数的内容打印到控制台上？  1.formals()函数：取得函数的参数并返回一个成对列表2.args()函数：取得函数的参数3.formalArgs()函数：返回参数名称的字符向量4.body函数：返回函数体
+#问题6-4，列举三个能够输出函数形参名称的函数。1.formals()2.args()3.formalArgs()
+#问题6-5，do.call()函数会做些什么？  可以调用函数，将其他函数当成参数，并像列表一样传递函数而非逐次传递
+
+#练习6-1 创建新环境
+multiples_of_pi <- new.env()
+multiples_of_pi[["two_pi"]] <- "2*π"
+multiples_of_pi$three_pi <- "3*π"
+assign(
+  "four_pi",
+  "4*π",
+  multiples_of_pi
+)
+ls(envir = multiples_of_pi)
+ls.str(envir = multiples_of_pi)
+
+#练习6-2
+a_function <- function(m){
+    if (m == Inf|-Inf|NA|NaN){#感觉要用到if语句就网上搜了一下格式
+      output <- "NA"
+    }else if(m%%2 == 0){
+      output <- "TRUE"
+    }else 
+      {output <- "FALSE"
+ }
+  output
+}
+m <- c(12)
+a_function(m)
+a_function(4)
+a_function(Inf)
+a_function(FALSE)#啊啊啊为什么这些调试了好久都是NA，希望老师指点一下
+
+another_function_for_question2 <- function(k,...){
+  if (is.numeric(k) == TRUE){
+    if(k%%2 == 0){
+      output <- "TRUE"
+      }else if(k == NaN|Inf|-Inf){
+      output <- "NA"
+      }else{
+      output <- "FALSE"
+    }
+  }else if(is.logical(k) == TRUE){
+    if(k == NA){
+      output <- "NA"
+    }else{
+      output <- "format error"
+    }
+  }else{
+    output <- "format error"
+  }
+  output
+}
+another_function_for_question2(2)#返回TRUE，没毛病
+do.call(another_function_for_question2,list(3))#啊为什么返回NA了
+another_function_for_question2(NaN)#返回“Error in if (k%%2 == 0) { : 需要TRUE/FALSE值的地方不可以用缺少值”，意思不是很懂，求助
+
+
+#练习6-3
+another_funlction <- function(n,...){
+  list("args" = args(n),"body" = body(n))
+}
+m <- function(p,q){
+  sqrt(p^2+q^2)
+}
+another_function(m)#第一种输入
+l <- function(f,g){
+  1/f+1/g
+}
+another_function(l)
+do.call(another_function,list(m))#第二种输入
